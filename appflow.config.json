@@ -4,7 +4,8 @@
       {
           "appId": "f7d88f41",
           "root": "projects/mobile-client",
-          "dependencyInstallCommand": "cd ../.. && npm install"
+          "dependencyInstallCommand": "cd ../.. && npm install",
+          "webBuildCommand": "cd ../.. && npm run build"
       }
   ]
 }
