@@ -2,7 +2,9 @@
   "projects": {
     "mobile-client": {
       "name": "mobile-client",
-      "integrations": {},
+      "integrations": {
+        "capacitor": {}
+      },
       "type": "angular",
       "root": "projects/mobile-client",
       "id": "f7d88f41"
