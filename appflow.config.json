@@ -3,7 +3,8 @@
   [
       {
           "appId": "f7d88f41",
-          "root": "projects/mobile-client"
+          "root": "projects/mobile-client",
+          "dependencyInstallCommand": "cd ../.. && npm install"
       }
   ]
 }
