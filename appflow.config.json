@@ -1,0 +1,9 @@
+{
+  "apps":
+  [
+      {
+          "appId": "f7d88f41",
+          "root": "projects/mobile-client"
+      }
+  ]
+}
