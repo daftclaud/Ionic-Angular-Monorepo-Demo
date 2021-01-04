@@ -2,5 +2,124 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "newProjectRoot": "projects",
-  "projects": {}
+  "projects": {
+    "mobile-client": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/mobile-client",
+      "sourceRoot": "projects/mobile-client/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/mobile-client",
+            "index": "projects/mobile-client/src/index.html",
+            "main": "projects/mobile-client/src/main.ts",
+            "polyfills": "projects/mobile-client/src/polyfills.ts",
+            "tsConfig": "projects/mobile-client/tsconfig.app.json",
+            "aot": false,
+            "assets": [
+              "projects/mobile-client/src/favicon.ico",
+              "projects/mobile-client/src/assets"
+            ],
+            "styles": [
+              "projects/mobile-client/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/mobile-client/src/environments/environment.ts",
+                  "with": "projects/mobile-client/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "mobile-client:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "mobile-client:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "mobile-client:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/mobile-client/src/test.ts",
+            "polyfills": "projects/mobile-client/src/polyfills.ts",
+            "tsConfig": "projects/mobile-client/tsconfig.spec.json",
+            "karmaConfig": "projects/mobile-client/karma.conf.js",
+            "assets": [
+              "projects/mobile-client/src/favicon.ico",
+              "projects/mobile-client/src/assets"
+            ],
+            "styles": [
+              "projects/mobile-client/src/styles.css"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/mobile-client/tsconfig.app.json",
+              "projects/mobile-client/tsconfig.spec.json",
+              "projects/mobile-client/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/mobile-client/e2e/protractor.conf.js",
+            "devServerTarget": "mobile-client:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "mobile-client:serve:production"
+            }
+          }
+        }
+      }
+    }},
+  "defaultProject": "mobile-client"
 }
