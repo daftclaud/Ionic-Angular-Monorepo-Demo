@@ -4,7 +4,8 @@
       "name": "mobile-client",
       "integrations": {},
       "type": "angular",
-      "root": "projects/mobile-client"
+      "root": "projects/mobile-client",
+      "id": "f7d88f41"
     }
   },
   "defaultProject": "mobile-client"
