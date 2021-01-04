@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/mobile-client",
+            "outputPath": "www",
             "index": "projects/mobile-client/src/index.html",
             "main": "projects/mobile-client/src/main.ts",
             "polyfills": "projects/mobile-client/src/polyfills.ts",
