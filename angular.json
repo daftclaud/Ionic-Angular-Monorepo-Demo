@@ -21,10 +21,45 @@
             "aot": false,
             "assets": [
               "projects/mobile-client/src/favicon.ico",
-              "projects/mobile-client/src/assets"
+              "projects/mobile-client/src/assets",
+              {
+                "glob": "**/*.svg",
+                "input": "node_modules/ionicons/dist/ionicons/svg",
+                "output": "./svg"
+              }
             ],
             "styles": [
-              "projects/mobile-client/src/styles.css"
+              "projects/mobile-client/src/styles.css",
+              {
+                "input": "node_modules/@ionic/angular/css/normalize.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/structure.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/typography.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/core.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/padding.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/float-elements.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/text-alignment.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/text-transformation.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/flex-utils.css"
+              },
+              {
+                "input": "projects/mobile-client/src/theme/variables.css"
+              }
             ],
             "scripts": []
           },
@@ -118,8 +153,33 @@
               "devServerTarget": "mobile-client:serve:production"
             }
           }
+        },
+        "ionic-cordova-serve": {
+          "builder": "@ionic/angular-toolkit:cordova-serve",
+          "options": {
+            "cordovaBuildTarget": "mobile-client:ionic-cordova-build",
+            "devServerTarget": "mobile-client:serve"
+          },
+          "configurations": {
+            "production": {
+              "cordovaBuildTarget": "mobile-client:ionic-cordova-build:production",
+              "devServerTarget": "mobile-client:serve:production"
+            }
+          }
+        },
+        "ionic-cordova-build": {
+          "builder": "@ionic/angular-toolkit:cordova-build",
+          "options": {
+            "browserTarget": "mobile-client:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "mobile-client:build:production"
+            }
+          }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "mobile-client"
 }
