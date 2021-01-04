@@ -1,3 +1,11 @@
 {
-  "projects": {}
+  "projects": {
+    "mobile-client": {
+      "name": "mobile-client",
+      "integrations": {},
+      "type": "angular",
+      "root": "projects/mobile-client"
+    }
+  },
+  "defaultProject": "mobile-client"
 }
