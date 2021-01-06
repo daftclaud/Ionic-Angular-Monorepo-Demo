@@ -1,27 +1,30 @@
-# MonorepoDemo
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.8.
-
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+# Steps to create a monorepo with Angular/Ionic & Appflow
+  1. Create an empty Angular workspace
+      1. https://angular.io/guide/file-structure#multiple-projects
+      2. ng new --create-application=false <project name>
+  2. Initialize monorepo as a multi-app project
+      1. https://ionicframework.com/docs/cli/configuration#multi-app-projects
+      2. ionic init --multi-app
+  3. Generate an application (I'll call mine mobile-client for this example)
+      1. ng generate application --prefix=app mobile-client
+      2. change outputPath in angular.json to ‘projects/mobile-client/www’
+  4. Add Ionic to app
+      1. https://ionicframework.com/docs/intro/cdn#ionic-angular
+      2. ng add @ionic/angular --project=mobile-client
+  5. Initialize Ionic app and make it default
+      1. https://ionicframework.com/docs/cli/commands/init
+      2. cd projects/mobile-client
+      3. ionic init --type=angular --default
+      4. cd ../..
+  6. Add capacitor
+      1. https://capacitorjs.com/solution/angular
+      2. ng add @capacitor/angular --project=mobile-client
+      3. move capacitor.config.json to project folder
+      4. add “capacitor”: {} to “integrations” in ionic.config.json
+  7. Add appflow.config.json
+      1. https://ionic.io/docs/appflow/cookbook/appflow-config#overview
+      2. "appId": <your Appflow appId>,
+      3. "root": "projects/mobile-client",
+      4. "dependencyInstallCommand": "cd ../.. && npm install",
+      5. "webBuildCommand": "cd ../.. && npm run build"
+  8. Push project to a repo and link project on Appflow!
